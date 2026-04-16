@@ -1,0 +1,21 @@
+{
+  "name": "fernando-de-los-santos-malpica/api-quita-kilos",
+  "description": "Centro de consumo de informacion importatnte sobre el sistema de alimentacion provisto por el programa Quita Kilos.",
+  "type": "project",
+  "require": {
+    "vlucas/phpdotenv": "5.6.x-dev"
+  },
+  "authors": [
+    {
+      "name": "Fernando De Los Santos Malpica",
+      "email": "fernando_santosmalpica@outlook.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Core\\": "./core",
+      "App\\": "./app"
+    }
+  }
+}
