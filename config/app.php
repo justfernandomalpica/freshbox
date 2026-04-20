@@ -1,4 +1,7 @@
 <?php
+// Setting dateTime configuration;
+require realpath(__DIR__ . "/datetime.php");
+
 // Namespacing
 
 use Core\Database\ActiveRecord;
@@ -7,6 +10,7 @@ use Core\Routing\Router;
 
 // Define project root directory name constatn
 define("PROJECT_ROOT", dirname(__DIR__));
+define("PROJECT_DATE_TIME", date('Y-m-d H:i:s'));
 
 // Fundamental requirements
 require realpath(dirname(__DIR__)."/vendor/autoload.php");

@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace App\Middlewares;
+namespace App\Middleware;
 
 class UseAuth {
-    public static function execute() {
-        debug("Using 'UseAuth' Middleware");
+    public static function handle(array $params) {
+        debug($params,false);
+        debug("Using 1'UseAuth' Middleware");
     }
 }

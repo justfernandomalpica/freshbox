@@ -86,7 +86,7 @@ final class Route {
         return $this->matchesPath($path);
     }
 
-    public function matchesPath(string $uri) : bool {
+    protected function matchesPath(string $uri) : bool {
         $regex = $this->compile();
         $normalizedUri = $this->normalizeUri($uri);
         $result = preg_match($regex, $normalizedUri);

@@ -12,14 +12,23 @@ class ActiveRecord {
     protected static array $columnsToSync = [];
     protected ?int $id = null;
     protected array $errors = [];
+    public ?string $created_at = null;
+    public ?string $updated_at = null;
 
     // Entablish database instance
     public static function setDB(Database $database) : void { self::$db = $database; }
 
     // Save 
     public function save() : static | bool{
-        if(is_null($this->id)) return $this->create();
-        else return $this->update();
+        if(is_null($this->id)) {
+            $this->created_at = PROJECT_DATE_TIME;
+            $this->updated_at = PROJECT_DATE_TIME;
+            return $this->create();
+        }
+        else {
+            $this->updated_at = PROJECT_DATE_TIME;
+            return $this->update();
+        }
     }
 
     // Create

@@ -3,6 +3,7 @@
 namespace Core\Routing;
 
 use App\Controllers\NotFoundController;
+use App\Middleware;
 
 class Router {
     // *Private atributes
@@ -12,7 +13,7 @@ class Router {
     public function get(string $path, callable|array $handler) : Route { return $this->addRoute('GET', $path, $handler); }
     public function put(string $path, callable|array $handler) : Route { return $this->addRoute('PUT', $path, $handler); }
     public function post(string $path, callable|array $handler) : Route { return $this->addRoute('POST', $path, $handler); }
-    public function pathc(string $path, callable|array $handler) : Route { return $this->addRoute('PATCH', $path, $handler); }
+    public function patch(string $path, callable|array $handler) : Route { return $this->addRoute('PATCH', $path, $handler); }
     public function delete(string $path, callable|array $handler) : Route { return $this->addRoute('DELETE', $path, $handler); }
 
     public function dispatch() : void {
@@ -38,7 +39,7 @@ class Router {
     private function execute(Route $route, array $params) : void {
         if(!empty($route->middlewares())) {
             foreach($route->middlewares() as $middleware){
-                call_user_func($middleware, $params);
+                call_user_func([$middleware, 'handle'], $params);
             }
         }
         call_user_func($route->handler(), $params);
