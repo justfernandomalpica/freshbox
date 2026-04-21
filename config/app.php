@@ -5,12 +5,12 @@ require realpath(__DIR__ . "/datetime.php");
 // Namespacing
 
 use Core\Database\ActiveRecord;
+use Core\Log\Logger;
 use Dotenv\Dotenv;
 use Core\Routing\Router;
 
 // Define project root directory name constatn
-define("PROJECT_ROOT", dirname(__DIR__));
-define("PROJECT_DATE_TIME", date('Y-m-d H:i:s'));
+require realpath(__DIR__."/constants.php");
 
 // Fundamental requirements
 require realpath(dirname(__DIR__)."/vendor/autoload.php");
@@ -19,6 +19,9 @@ require realpath(__DIR__ . "/functions.php");
 // Environment variables configuration
 $dotenv = Dotenv::createImmutable(PROJECT_ROOT);
 $dotenv->safeLoad();
+
+// Setting Logging system
+Logger::setStream("storage/log");
 
 // Setting ActiveRecord instance with database reference;
 require realpath(__DIR__ . "/database.php");
