@@ -3,7 +3,7 @@
 namespace App\Models;
 use Core\Database\ActiveRecord;
 
-class ProductsModel implements ActiveRecord {
+class ProductsModel extends ActiveRecord {
     protected static string $table = "products";
     protected static array $columns = [
         'id',
